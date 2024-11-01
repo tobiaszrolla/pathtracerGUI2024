@@ -1,0 +1,27 @@
+@startuml
+class 3DVector {
+    -double posX
+    -double posY
+    -double posZ
+
+    +3DVector(double x, double y, double z)
+    +3DVector add(3DVector other3Dvec)
+    +3DVector mul(double scal)
+    +3DVector sub(3DVector other3Dvec)
+    +3DVector dot(3DVector other3Dvec)
+    +3DVector cross(3DVector other3Dvec)
+}
+class Ray{
+    -3DVector orgin
+    -3DVector diraction
+}
+class Triangle{
+    -3DVector triVec1
+    -3DVector triVec2
+    -3DVector triVec3
+
+    double intersection(Ray ray)
+}
+Ray *-- 3DVector :contains
+Triangle *-- 3DVector :contains
+@enduml
