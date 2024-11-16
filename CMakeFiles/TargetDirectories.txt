@@ -1,0 +1,4 @@
+/home/tobiasz/pathtracerGUI2024/CMakeFiles/path_tracer.lib.dir
+/home/tobiasz/pathtracerGUI2024/CMakeFiles/path_tracer.dir
+/home/tobiasz/pathtracerGUI2024/CMakeFiles/edit_cache.dir
+/home/tobiasz/pathtracerGUI2024/CMakeFiles/rebuild_cache.dir

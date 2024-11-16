@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdexcept>
 #pragma once
 
 //==============================Klasa odpowiednik wektora w przestrzeni===========================================================//

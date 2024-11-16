@@ -1,5 +1,4 @@
-#include "../include/Vector3D.h"
-#include <stdexcept>
+#include "../include/Vector3D.hpp"
 
 float Vector3D::lenght()
 {

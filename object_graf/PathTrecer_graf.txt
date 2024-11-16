@@ -10,18 +10,39 @@ class 3DVector {
     +3DVector sub(3DVector other3Dvec)
     +3DVector dot(3DVector other3Dvec)
     +3DVector cross(3DVector other3Dvec)
+    -float lenght()
+    +3DVector normal()
 }
 class Ray{
     -3DVector orgin
     -3DVector diraction
+    +Ray(3DVector org, 3DVector dir)
+    +getOrgin()
+    +getDiraction()
 }
-class Triangle{
-    -3DVector triVec1
-    -3DVector triVec2
-    -3DVector triVec3
+struct Face
+{
+    vector<int> vertexIndices
+    vector<int> texCoordIndices
+    vector<int> normalIndices
 
-    double intersection(Ray ray)
+}
+struct TextureCoord
+{
+    float u
+    float v
+}
+class Mesh{
+    -vector<Vector3D> Vertices
+    -vector<Vector3D> Normals
+    -vector<Face> Faces
+    -vector<TextureCoord> texCoords
+     
+
+    +void loadFileOBJ(const std::string& file)
 }
 Ray *-- 3DVector :contains
-Triangle *-- 3DVector :contains
+Mesh *-- 3DVector :contains
+Mesh *-- Face :contains
+Mesh *-- TextureCoord :contains
 @enduml
