@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpath_tracer.lib.a CMakeFiles/path_tracer.lib.dir/src/vector.cpp.o
-/usr/bin/ranlib libpath_tracer.lib.a
