@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpath_tracer.lib.a CMakeFiles/path_tracer.lib.dir/src/Vector3D.cpp.o CMakeFiles/path_tracer.lib.dir/src/Mesh.cpp.o CMakeFiles/path_tracer.lib.dir/src/Triangle.cpp.o CMakeFiles/path_tracer.lib.dir/src/PathTracer.cpp.o
-/usr/bin/ranlib libpath_tracer.lib.a
