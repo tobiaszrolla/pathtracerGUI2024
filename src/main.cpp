@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/Mesh.hpp"
+#include "../include/PathTracer.hpp"
 
 int main()
 {
@@ -7,6 +7,9 @@ int main()
     Vector3D wek2(4.0,34.2,44.2);
     Ray ray(wek,wek2);
     Mesh obj;
-    obj.loadFiles("/home/tobiasz/pathtracerGUI2024/data/Earth2K.mtl", "/home/tobiasz/pathtracerGUI2024/data/Earth2K.obj");
+    obj.loadFiles("/home/tobiasz/pathtracerGUI2024/pythonAPI/data/penguin.mtl", "/home/tobiasz/pathtracerGUI2024/pythonAPI/data/penguin.obj");
+    PathTracer path_tracer;
+    path_tracer.generateImage(obj);
+
     return 0;
 }

@@ -5,22 +5,26 @@
 //==============================Klasa odpowiednik wektora w przestrzeni===========================================================//
 class Vector3D
 {
-    private:
+    protected:
         float posX;
         float posY;
         float posZ;
     private:
-        float lenght();
+        float lenght() const;
     public:
+        //constructors
+        Vector3D();
         Vector3D(float x, float y, float z);
-        Vector3D add(Vector3D otherVec);
-        Vector3D sub(Vector3D otherVec);
-        Vector3D mult(float scal);
-        Vector3D cross(Vector3D otherVec);//iloczyn wyektorowy z ang cross product
-        float dot(Vector3D otherVec); //iloczyn skalarny z ang dot product
-        Vector3D normal();
-
-
-
+        //getter
+        float getX()const{return posX;};
+        float getY()const{return posY;};
+        float getZ()const{return posZ;};
+        //other
+        Vector3D add(const Vector3D &otherVec) const;
+        Vector3D sub(const Vector3D &otherVec) const;
+        Vector3D mult(const float &scal) const;
+        Vector3D cross(const Vector3D &otherVec) const;//iloczyn wyektorowy z ang cross product
+        float dot(const Vector3D &otherVec) const; //iloczyn skalarny z ang dot product
+        Vector3D normalise() const;
 
 };
