@@ -11,8 +11,8 @@ private:
     float intensity; 
 public:   
     
-    Light(Vector3D p, Color c, float i) : position(p), color(c), intensity(i) {}
-    Vector3D getPosition() const {return position;}
-    Color getColor() const {return color;}
-    float getIntensity() const {return intensity;}
+    __host__ __device__ Light(Vector3D p, Color c, float i) : position(p), color(c), intensity(i) {}
+    __device__ Vector3D getPosition() const {return position;}
+    __device__ Color getColor() const {return color;}
+    __device__ float getIntensity() const {return intensity;}
 };

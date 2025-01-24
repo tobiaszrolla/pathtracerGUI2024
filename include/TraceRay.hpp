@@ -1,11 +1,16 @@
 #include "Light.hpp"
+
 class TraceRay
 {
-    protected:
-        Color traceRay( Ray &ray, 
-                        int depth, 
-                        const std::vector<Triangle> &triangles, 
-                        const std::vector<Material> &materiales, 
-                        const Light& light) const;
-        bool isInShadow( Vector3D point,  Vector3D& lightDir, const std::vector<Triangle>& triangles) const;
+    public:
+        __device__ static Color traceRay(Ray& ray, 
+                                int depth, 
+                                Triangle* triangles, 
+                                Material* materials, 
+                                int numTriangles, 
+                                Light light,
+                                Color prev_color);
+    private:
+        __device__ static bool isInShadow(Vector3D point, Vector3D& lightDir, Triangle* triangles, int numTriangles);
+        
 };

@@ -6,75 +6,67 @@
 Mesh::Mesh()
 {};
 
-bool Mesh::loadFileOBJ(const std::string& filePath){
-    //otwieranie pliku
-    std::ifstream  file(filePath);
+bool Mesh::loadFileOBJ(const std::string& filePath) {
+    // Otwieranie pliku
+    std::ifstream file(filePath);
     if (!file.is_open()) {
         throw std::runtime_error("Can't open a file");
-        return false;  //to nie jest potrzebne ale zostawie żeby kompilator nie płakał
+        return false;
     }
 
     std::string line;
-    int materialIndex = -1; //ustawiam na -1 bo pierw jest informacja o materiale a potem faces
-    while (std::getline(file, line)) //pobieranie po linijce
-    {
-        //urzycie stream stringa
+    int materialIndex = -1; // Indeks materiału, domyślnie -1
+    std::string currentObject; // Nazwa bieżącego obiektu
+
+    // Wczytanie danych obiektu
+    while (std::getline(file, line)) {
         std::istringstream streamLine(line);
         std::string type;
         streamLine >> type;
 
-        //sprawdzanie lini 
-        if(type == "v")  //wierzchołek współżędne
-        {
-            float x,y,z;
+        if (type == "o") { // Nowy obiekt
+            streamLine >> currentObject;
+        }
+        else if (type == "v") { // Współrzędne wierzchołków
+            float x, y, z;
             streamLine >> x >> y >> z;
             vertices.emplace_back(x, y, z);
         }
-        else if(type == "vn")  //współżędne normalnej do trójkąta/czworokąta
-        {
-            float nx,ny,nz;
+        else if (type == "vn") { // Współrzędne wektorów normalnych
+            float nx, ny, nz;
             streamLine >> nx >> ny >> nz;
-            vertices.emplace_back(nx, ny, nz);
+            normals.emplace_back(nx, ny, nz);
         }
-        else if(type == "vt")  //współżędne tekstur
-        {
+        else if (type == "vt") { // Współrzędne tekstur
             textureCoord texCoord;
             streamLine >> texCoord.u >> texCoord.v;
             tex_coords.push_back(texCoord);
         }
-        else if(type == "usemtl")  //rodzaj materiału
-        {
+        else if (type == "usemtl") { // Użycie nowego materiału
             materialIndex++;
         }
-        else if(type == "f") //Face trójkąty/czworokąty
-        {
+        else if (type == "f") { // Twarze obiektów
             Face face;
-            std::string FaceData;
-            while(streamLine >> FaceData)
-            {
-                //string stream dla face
-                std::replace(FaceData.begin(), FaceData.end(), '/', ' ');
-                std::istringstream FaceStream(FaceData);
+            std::string faceData;
+
+            while (streamLine >> faceData) {
+                std::replace(faceData.begin(), faceData.end(), '/', ' ');
+                std::istringstream faceStream(faceData);
 
                 int vertexIndex = 0, texCoordIndex = 0, normalIndex = 0;
-                FaceStream >> vertexIndex >> texCoordIndex >> normalIndex;
+                faceStream >> vertexIndex >> texCoordIndex >> normalIndex;
 
-                //przepisanie do face
                 face.vertexIndices.push_back(vertexIndex - 1);
                 face.texCoordIndices.push_back(texCoordIndex - 1);
                 face.normalIndices.push_back(normalIndex - 1);
-                face.material_index = materialIndex;
-                /*if(materialIndex == 1)
-                {
-                    int i = 0;
-                    i++;
-                }*/
             }
+
+            face.material_index = materialIndex;
             faces.push_back(face);
         }
     }
-    return true; 
-};
+    return true;
+}
 
 bool Mesh::loadFileMTL(const std::string& filePath){
     //otwieranie pliku

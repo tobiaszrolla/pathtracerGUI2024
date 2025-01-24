@@ -1,0 +1,35 @@
+# Blender 4.2.3 LTS MTL File: 'penguin.blend'
+# www.blender.org
+
+newmtl Creature.002
+Ka 0.008002 0.000007 0.000446
+Kd 0.800236 0.000765 0.044697
+Ks 0.00010000 0.00010000 0.00010000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Users/TobiaszRolla(272522)/Downloads/african-penguin-spheniscus-demersus-low-poly/source/Users/jarradriehs/Desktop/Textures/African penguin - the reef_ColorMap.png
+map_Ns C:/Users/TobiaszRolla(272522)/Downloads/african-penguin-spheniscus-demersus-low-poly/source/Users/jarradriehs/Desktop/Textures/African penguin - the reef_RoughnessMap.png
+map_refl C:/Users/TobiaszRolla(272522)/Downloads/african-penguin-spheniscus-demersus-low-poly/source/Users/jarradriehs/Desktop/Textures/African penguin - the reef_MetalnessMap.png
+map_d C:/Users/TobiaszRolla(272522)/Downloads/african-penguin-spheniscus-demersus-low-poly/source/Users/jarradriehs/Desktop/Textures/African penguin - the reef_ColorMap.png
+map_Bump -bm 1.000000 C:/Users/TobiaszRolla(272522)/Downloads/african-penguin-spheniscus-demersus-low-poly/source/Users/jarradriehs/Desktop/Textures/African penguin - the reef_NormalMap.png
+
+newmtl Material
+Ns 250.000000
+Ka 0.008002 0.000807 0.005447
+Kd 0.800236 0.080765 0.544697
+Ks 0.000100 0.0001000 0.0001000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+
+newmtl Material.001
+Ns 250.000000
+Ka 0.010000 0.010000 0.010000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2

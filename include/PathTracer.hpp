@@ -1,20 +1,26 @@
 //dobra PathTracer
-#include "TraceRay.hpp"
-class PathTracer : public TraceRay
+#include "kernel.h"
+class PathTracer
 {
     private:
-        const int max_depth = 20;
+        //const int max_depth = 20;
         float height;
         float width;
         int samples;
-        std::vector<Triangle> triangles;
-        std::vector<Material> materiales;
+
+        // Wskaźniki do pamięci GPU
+        Color* d_image;
+        Triangle* d_triangles;
+        Material* d_materials;
     private:
-        float randomFloat() const;
         //Color traceRay(Ray &ray, int depth, const std::vector<Triangle> &triangles, const std::vector<Material> &materiales, const Light& light) const;
         void saveImage(const std::vector<Color>& image, int width, int height, const std::string& filename) const;
+        void allocateGPUMemory(const std::vector<Triangle>& triangles, const std::vector<Material>& materials);
+        void copyDataToGPU(const std::vector<Triangle>& triangles, const std::vector<Material>& materials);
+        void freeGPUMemory();
     public:
         PathTracer();
+        ~PathTracer();
         PathTracer(int x, int y, int samp);
         void generateImage(Mesh mesh);
         

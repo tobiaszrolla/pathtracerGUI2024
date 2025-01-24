@@ -13,7 +13,7 @@ class Color : public Vector3D
 
     public:
         //konstruktor
-        Color(float r = 0.0f, float g = 0.0f, float b = 0.0f)
+        HOST_DEVICE Color(float r = 0.0f, float g = 0.0f, float b = 0.0f)
         : Vector3D(r, g, b) {}
 
         //gettery
@@ -23,9 +23,15 @@ class Color : public Vector3D
 
         //inne
         void clamp();
-        Color& operator=(const Vector3D &vec);
+        DEVICE Color& operator=(const Vector3D &vec);
         void toPPM(int &r, int &g, int &b);
-        Color add(const Color &otherColor) const;
+        DEVICE Color add(const Color &otherColor) const;
+        // Mnożenie przez drugi kolor
+        DEVICE Color multColor(const Color &otherColor) const {
+            return Color(this->posX * otherColor.getX(),  //R
+                        this->posY * otherColor.getY(),  //G
+                        this->posZ + otherColor.getZ()); //B
+        }
 
 
 };
